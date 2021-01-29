@@ -1,0 +1,133 @@
+{
+  "main": {
+    "id": "6622a8efb8deeb23",
+    "type": "split",
+    "children": [
+      {
+        "id": "79797d897c855f23",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Content/2_Begriffe.md",
+            "mode": "source"
+          }
+        },
+        "group": "9b79f570cbaac778"
+      },
+      {
+        "id": "482804c632658b1b",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Content/2_Begriffe.md",
+            "mode": "preview"
+          }
+        },
+        "group": "9b79f570cbaac778"
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2c134f9edc800760",
+    "type": "split",
+    "children": [
+      {
+        "id": "902143ddc1c397bf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c7346458953ad4c3",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "92b423584b0f2af8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "a16f87870c6f342c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Content/2_Begriffe.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 332
+  },
+  "right": {
+    "id": "6ed33d025cb24143",
+    "type": "split",
+    "children": [
+      {
+        "id": "c66bfad1398599b7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "afb24abca39dea77",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Content/2_Begriffe.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "86f7b68b6a919e60",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Content/2_Begriffe.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "lastOpenFiles": [
+    "Content/2_Begriffe.md",
+    "hjdsgf.md",
+    "gh.md",
+    "Untitled.md",
+    "Content/kannweg.md",
+    "Content/3_Modellbildung.md",
+    "Notes/20210128_Polstellen.md",
+    "Content/Lunze2016.md",
+    "Notes/Untitled.md",
+    "Content/1_Agenda.md"
+  ]
+}

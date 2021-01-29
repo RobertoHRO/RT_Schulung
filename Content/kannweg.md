@@ -1,0 +1,17 @@
+| Funktionsname                                  | Originalfunktion $f(t) = \mathcal{L}^{-1} \left\{ F(s) \right\}$  | Bildfunktion $F(s) = \mathcal{L}\left\{ f(t) \right\}$  | [Konvergenz]- bereich       |
+| -----------------------------------------------| ------------------------------------------------------------------| --------------------------------------------------------| ----------------------------|
+| [Diracsche Deltadistribution] Einheitsimpuls   | $\delta(t)\,$ $\frac{\mathrm d^n}{\mathrm dt^n} \delta (t)\,$     | $1\,$ $s^{n}\,$                                         | $s \in \mathbb{C}\,$        |
+| [Heavisidesche Sprungfunktion] Einheitssprung  | $\Theta(t)\,$                                                     | $\frac{1}{s}$                                           | $\operatorname{Re}(s)>0$    |
+| [Exponentialfunktion]                          | $e^{-at}\,$                                                       | $\frac{1}{s+a}$                                         | $\operatorname{Re}(s)> -a$  |
+| [Exponentialverteilung]                        | $1-e^{-at}\,$                                                     | $\frac{a}{s(s+a)}$                                      | $\operatorname{Re}(s)> -a$  |
+| 1-te [Potenz]                                  | $t\$                                                              | $\frac{1}{s^2}$                                         | $\operatorname{Re}(s)>0$    |
+| n-te Potenz                                    | $t^{n}\,$                                                         | ${ n! \over s^{n+1}}$                                   | $\operatorname{Re}(s)>0$    |
+| [Potenzreihe]                                  | $\sum_{n=0}^{\infty} a_n (t-t_0)^{n}\,$                           | $\sum_{n=0}^{\infty} \frac{a_n n!}{s^{n+1}} e^{-t_0 s}$ | $\operatorname{Re}(s)>0$    |
+| Gedämpfte Potenzfunktion                       | $t e^{-at}\,$                                                     | $\frac{1}{(s+a)^2}$                                     | $\operatorname{Re}(s)>-a$   |
+|                                                | $t^{n} e^{-at}\,$                                                 | $\frac{n!}{(s+a)^{n+1}}$                                | $\operatorname{Re}(s)>-a$   |
+|                                                | $\frac{t^{n-1}}{(n-1)!} \cdot e^{-at}\,$                          | $(s + a)^{-n}$                                          | $\operatorname{Re}(s)>-a$   |
+| n-te [Wurzel]                                  | $\sqrt[n]{t}$                                                     | $s^{-(n+1)/n} \cdot \Gamma\left(1+\frac{1}{n}\right)$   | $\operatorname{Re}(s)>0$    |
+| [Sinus]                                        | $\sin(at) \,$                                                     | $\frac{a}{s^2 +a^2}$                                    | $\operatorname{Re}(s)>0$    |
+| [Cosinus]                                      | $\cos(at) \,$                                                     | $\frac{s}{s^2 +a^2}$                                    | $\operatorname{Re}(s)>0$    |
+| [Sinus hyperbolicus]                           | $\sinh(at) \,$                                                    | $\frac{a}{s^2 -a^2}$                                    |                             |
+| [Cosinus hyperbolicus]                         | $\cosh(at) \,$                                                    | $\frac{s}{s^2 -a^2}$                                    |                             |
