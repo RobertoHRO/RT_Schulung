@@ -1,0 +1,51 @@
+.reveal h1 {
+	text-align:center;
+	text-transform:none;
+}
+
+.reveal h2 {
+	text-align:left;
+	text-transform:none;
+}
+
+.reveal {
+	font-weight: 100;
+	font-size: 18pt;
+}
+
+.reveal .slides { text-align:left; }
+
+
+.reveal .slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.reveal .slides. present {
+    top: 0;
+}
+
+ .reveal .slides {
+	 position: absolute;
+	 top: 0px; 
+	 left: 0px; 
+	 z-index:500; 
+	 font-size:18pt;
+	 background-color: rgb(55,71,79);
+	 color: rgb(207,216,220)
+}
+
+ .reveal {
+	 background-color: rgb(55,71,79)
+}
+
+.reveal[data-transition-speed=default] .slides section {
+	transition-duration: .4s
+}
+
+.reveal .controls .controls-arrow:before {
+	transform: translateX(.5em) translateY(1.55em) rotate(45deg)
+}
+
+/*Reveal.configure({ autoSlide: 500 });*/
