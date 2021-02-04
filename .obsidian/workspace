@@ -6,10 +6,11 @@
       {
         "id": "79797d897c855f23",
         "type": "leaf",
+        "dimension": 50.103519668737064,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Content/2_Begriffe.md",
+            "file": "Content/3_Modellbildung.md",
             "mode": "source"
           }
         },
@@ -18,11 +19,12 @@
       {
         "id": "482804c632658b1b",
         "type": "leaf",
+        "dimension": 49.896480331262936,
         "active": true,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Content/2_Begriffe.md",
+            "file": "Content/3_Modellbildung.md",
             "mode": "preview"
           }
         },
@@ -68,7 +70,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Content/2_Begriffe.md"
+                "file": "Content/3_Modellbildung.md"
               }
             }
           }
@@ -92,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Content/2_Begriffe.md",
+                "file": "Content/3_Modellbildung.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -107,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Content/2_Begriffe.md"
+                "file": "Content/3_Modellbildung.md"
               }
             }
           }
@@ -119,15 +121,15 @@
     "collapsed": true
   },
   "lastOpenFiles": [
-    "Content/2_Begriffe.md",
-    "hjdsgf.md",
-    "gh.md",
-    "Untitled.md",
-    "Content/kannweg.md",
     "Content/3_Modellbildung.md",
-    "Notes/20210128_Polstellen.md",
-    "Content/Lunze2016.md",
     "Notes/Untitled.md",
-    "Content/1_Agenda.md"
+    "Content/4_Erste_Regler.md",
+    "Content/2_Begriffe.md",
+    "Content/1_Agenda.md",
+    "Content/7_Übertragungsfunktion.md",
+    "Content/6_Laplace.md",
+    "Content/Lunze2016.md",
+    "Untitled 1.md",
+    "2_Begriffe.pdf"
   ]
 }

@@ -39,6 +39,17 @@ Berechnet aus den Regelabweichungen die Stellgrößen.
 
 ---
 
+## Blockschaltbild
+**Beispiel 1: Duschen**
+
+![Blockschaltbild Duschen](Bilder_RT_6.svg)
+
+--> Nenne weitere Störungen bzw. Umwelteinwirkungen!
+
+**Beispiel 2: pH-Wert Regelkreis**
+![Blockschaltbild eines pH Wert Regelkreises  Quelle: Lunze 1 2016|400](Blockschaltbild_pH_Wert_Regler.png)
+
+---
 ## Beispiel 1: Geschwindigkeitsregelung 1/
 Aufgabe: Fahrzeuggeschwindigkeit $y(t)$ soll einer zeitvariablen Führungsgröße $w(t)$ folgen.
 

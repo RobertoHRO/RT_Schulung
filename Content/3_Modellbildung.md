@@ -1,22 +1,44 @@
 Modellbildung: Was, Wie, Warum
 ========================
+
+---
+
+## Wiederholung
+Welche Schritte gehören zur Bearbeitung einer Regelungsaufgabe?
+
+---
+
+## Wiederholung
+#### Lösungsweg für Regelungsaufgaben
+1.  Formulierung der Regelungsaufgabe
+	1.  Festwertregelung
+	2.  Folgeregelung
+	3.  Änderung der Streckendynamik
+2.  Auswahl der Regelgröße
+3.  Auswahl der Stellgröße
+4.  Modellierung der Regelstrecke
+5.  Regelerentwurf
+6.  Analyse des Verhaltens des geschlossenen Regelkreises
+7.  Realisierung des Reglers
+
+(nach [Lunze2016](Lunze2016.md))
+
 ---
 
 ## Modellbasierte Verfahren
 
-![Prinzipeller Lösungsweg für Regelungsaufgaben Quelle: https://wiki.tum.de/download/attachments/5248843/ITK_Vortrag_Regeltungstechnik_in_aller_Ku%CC%88rze.pdf?version=1&modificationDate=1464601144013&api=v2\|700](Pasted%20image%2020210128142713.png)
+![Prinzipeller Lösungsweg für Regelungsaufgaben Quelle: https://wiki.tum.de/download/attachments/5248843/ITK_Vortrag_Regeltungstechnik_in_aller_Ku%CC%88rze.pdf?version=1&modificationDate=1464601144013&api=v2|700](Pasted%20image%2020210128142713.png)
 
 Es gibt modellfreie Regler**einstell**verfahren z.B. Ziegler-Nichols-Verfahren. Dabei werden die Parameter eine standardisierten Reglerstruktur (z.B. PID-Regler) **LIVE** eingestellt. 
 
 --> Welche Vor- und Nachteile hat dieser Ansatz?   
 
 ---
-
 ## Modellbildung
 
-1. Beschreibung des Modellierungsziels: Regelaufgabe definiert Anforderungen an Modell 
-2. Auswahl der Modellannahmen: Was wird modelliert - und was nicht (Einfach starten! - Mut zur Lücke!!!)
-3. Verbale Beschreibung der Regelstrecke
+1. Beschreibung des Modellierungsziels: Regelaufgabe definiert Anforderungen an Modell (Ein-/Ausgänge, Genauigkeit, linear od. nichtlinear, ...)
+2. Auswahl der Modellannahmen: Was wird modelliert (Phänomene, Teilsysteme, Wechselwirkungen mit der Umgebung) - und was nicht (Einfach starten! - Mut zur Lücke!!!)
+3. Verbale Beschreibung der Regelstrecke _"Dieses „Wortmodell“ kann von allen an der Modellbildung Beteiligten (und nicht nur von Regelungstechnikern) verstanden und überprüft werden"_
 4. Aufstellung des Blockschaltbildes
 	1. Teilkomponenten und deren Verbindungen werden im verbale Modell gefunden
 	2. Blockschaltbild ist die graphische Darstellung 
@@ -24,6 +46,8 @@ Es gibt modellfreie Regler**einstell**verfahren z.B. Ziegler-Nichols-Verfahren. 
 	1. Jede Teilkomponente muss ihre Ausgänge aus ihrem Zustand und ihren Eingängen berechnen können.
 6. Modellparametrierung
 7. Modellvalidierung: Abgleich mit Erwartung oder Messung
+
+(nach [Lunze2016](Lunze2016.md) mit Ergänzungen/Kommentaren)
 
 ---
 
@@ -40,18 +64,6 @@ Zitat aus Lunze:
 **Elemente eines Blockschaltbildes (BSB)**
 ![Spezielle Symbole in Blockschaltbildern Quelle: Lunze 1 2016 (Abb. 3.2)|500](Uebertragungsglieder.png)
 
-**Beispiel 1: pH-Wert Regelkreis**
-![Blockschaltbild eines pH Wert Regelkreises  Quelle: Lunze 1 2016|400](Blockschaltbild_pH_Wert_Regler.png)
-
----
-
-## Blockschaltbild
-**Beispiel 2: Duschen**
-
-![Blockschaltbild Duschen](Bilder_RT_6.svg)
-
---> Nenne weitere Störungen bzw. Umwelteinwirkungen!
-
 ---
 
 ## Beispiel 1: Fahrzeugmodell 1/ 
@@ -66,6 +78,10 @@ mit einer Masse von $m=1000 kg$ einem Reibbeiwert von $b=50 \tfrac{N\cdot s}{m}$
 ## Beispiel 1: Fahrzeugmodell 2/ 
 ### 1. Übertragungsglied
 ![[Bilder_RT_2.svg]]
+
+---
+
+## Beispiel 1: Fahrzeugmodell 3/ 
 ### 2. Dauer der Beschleunigung
 - In der Aufgabe ist der Reibbeiwert $b$ angegeben --> Der antreibenden Kraft $F_u$ wirkt die Reibkraft $F_R = b\cdot \dot{x}(t)$ entgegen.
 - Fahrzeugposition $x(t)$ wird durch Differentialgleichung mit Kräftebilanz beschrieben:
@@ -81,7 +97,7 @@ $$
 
 ---
 
-## Beispiel 1: Fahrzeugmodell 3/
+## Beispiel 1: Fahrzeugmodell 4/
 
 DGL | Lösung | eingesetzt 
 -----| -------- | -----------
@@ -120,6 +136,9 @@ u_C(t) &=& u_C(0) + \frac{1}{C}\int_0^ti_1(\tau)d\tau
 \end{eqnarray}
 $$
 
+---
+
+## Beispiel 2: Reihenschwingkreis 3/ 
 *Kirchhoff'sche Gesetze* :
 $$
 \begin{eqnarray}
@@ -130,6 +149,8 @@ $$
 
 **Ziel:** Eine Differentialgleichung ableiten, in der nur noch die Eingangsgröße $u(t) = u_1(t)$ und die Ausgangsgröße $y(t) = u_2(t)$ sowie deren Ableitungen vorkommen.
 
+---
+
 ## Beispiel 2: Reihenschwingkreis 3/ 
 ![Ersatzschaltbild des Reihenschwingkreises Quelle: Abb. 4.2 aus [Lunze2016](Lunze2016.md) ](Schaltung%20Reihenschwingkreis.png)
 Strom-Spannungsbeziehungen für R, L, C:
@@ -139,7 +160,6 @@ C\,L\frac{d^2}{dt^2}u_2(t)+C\,R\frac{d}{dt}u_2(t)+u_2(t) &=& C\,R\frac{d}{dt}u_1
 \end{eqnarray}
 $$
 
----
 
-## Abschluss Modellbildung
+#### Abschluss Modellbildung
 - Bei der Modellierung sollte die Dynamik möglichst als Differentialgleichungssystem mit den Ausgängen als abhängige Variable dargestellt werden

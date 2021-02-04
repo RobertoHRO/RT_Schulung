@@ -39,6 +39,23 @@ größte Realteil einer Singularität von $F$.
     Verlag Harri Deutsch, S. 775, Kap. 15.2.1.1.
 
 ---
+
+## Notationen
+$$
+\newcommand{\laplace}{\circ\hspace{-5pt}-\hspace{-5pt}\bullet}
+\newcommand{\Laplace}{\bullet\hspace{-5pt}-\hspace{-5pt}\circ}
+$$
+- Festlegung: Signale und Syteme im 
+	- Originalbereich bekommen Kleinbuchstaben $y(t)$, $u(t)$, $g(t)$
+	- Bildbereich bekommen Großbuchstaben $Y(s)$, $U(s)$, $G(s)$
+- Verbreitet sind diese Notationen für die Transformationen: $$f(t)\;\laplace\;F(s)$$$$F(s)\;\Laplace\;f(t)$$
+
+BTW: Gleiche Notation wird auch für die Fourier-Transformation verwendet:
+- $Y(jω)$, $U(jω)$, $G(jω)$ 
+- $f(t)\;\laplace\;F(jω)$, $\qquad F(jω)\;\Laplace\;f(t)$
+
+ 
+---
 ## Allgemeine Eigenschaften bzw. Operationen
 |                                                                                   | Originalfunktion $f(t) = \mathcal{L}^{-1} \left\{ F(s) \right\}$  | Bildfunktion $F(s) = \mathcal{L}\left\{ f(t) \right\}$            |
 | ------------------------------------------------------------------------------------------------------------------------| ------------------------------------------------------------------| ------------------------------------------------------------------|
@@ -107,58 +124,67 @@ größte Realteil einer Singularität von $F$.
 
 ---
 
-## Autobeispiel
-- Festlegung: Signale und Syteme im 
-	- Originalbereich bekommen Kleinbuchstaben $y(t)$, $u(t)$, $g(t)$
-	- Bildbereich bekommen Kleinbuchstaben $Y(s)$, $U(s)$, $G(s)$
-
-
 ## Beispiel 1: Fahrzeugmodell 1/ 
 - Betrachtet wird das Fahrzeug
-![Geschwindigkeitsregelung (Quelle: [[Franklin2015]])](Pasted%20image%2020201227100125.png)
+![Geschwindigkeitsregelung (Quelle: [[Franklin2015]])|300](Pasted%20image%2020201227100125.png)
 mit einer Masse von $m=1000 kg$ einem Reibbeiwert von $b=50 \tfrac{N\cdot s}{m}$ und einer beschleunigenden Kraft von $F_u=500 N$
 
-Das Fahrzeug folgt der DGL:
-$$\Large \tfrac{d}{d\,t}v(t)  =- \frac{b}{m}\cdot v(t)+  \frac{u(t)}{m}$$
+**Aufgabe:** 
+Mit den Korrespondenzen soll die Fahrzeuggeschwindugkeit nach einem:
+1) Kraftimpuls zur Zeit $t_0$  
+2) einem Kraftsprung  der Höhe $\hat{F}$ zur Zeit $t_0$  
 
-Im Bildbereich
-$$\circ\!—\!\bullet$$
+berechnet werden.
+
+----
+
+## Beispiel 1: Fahrzeugmodell 2/ 
+#### Systembeschreibung im Bildbereich
+Das Fahrzeug folgt im Zeitbereich der Differentialgleichung :
+$$\tfrac{d}{d\,t}v(t)  =- \frac{b}{m}\cdot v(t)+  \frac{1}{m}\,u(t)$$
+
+mit der Korrespondenz
 
 |                                                                                   | Originalfunktion | Bildfunktion             |
 | ------------------------------------------------------------------------------------------------------------------------| ------------------------------------------------------------------| ------------------------------------------------------------------|
 | 1\. Ableitung im Originalbereich                                                                                      | $f'(t) \,$                                                        | $sF(s)-f(0) \,$                                                   |
 
-
+ergibt sich im Bildbereich diese algebraische Gleichung:
 $$s\,V(s) = \frac{b}{m}\cdot V(s)  +  \frac{1}{m}\,U(s)$$
+(Wir nehmen an: $f(0) = 0$)
+
+---
+
+## Beispiel 1: Fahrzeugmodell 3/ 
+#### Eingangssignal im Bildbereich
 
 Eingangssignal festlegen
 
-1) Impuls zut Zeit $t_0$
-$u(t)=δ(t-t_0)$
+1) Impuls zut Zeit $t_0$:  $\quad u(t)=δ(t-t_0)$
 
-2) Sprung zur Zeit $t_0$
-$u(t)=Θ(t-t_0)$
+2) Sprung der Höhe $\hat{F}$ zur Zeit $t_0$:  $\quad u(t)=\hat{F}\,Θ(t-t_0)$
+
+Nötige Korrespondenzen und Eigenschaften
+
 
 | Funktionsname                                  | Originalfunktion   | Bildfunktion   |
 | -----------------------------------------------| ------------------------------------------------------------------| --------------------------------------------------------|
 | Diracsche Deltadistribution Einheitsimpuls   | $\delta(t)\,$     | $1\,$                                        |
 | Heavisidesche Sprungfunktion Einheitssprung  | $\Theta(t)\,$                                                     | $\frac{1}{s}$                                           |
-
-
-
-| Funktionsname                                  | Originalfunktion   | Bildfunktion   |
-| -----------------------------------------------| ------------------------------------------------------------------| --------------------------------------------------------|
 | Verschiebung im Originalbereich (bei einseitiger Transformation nur $a > 0 \,$ oder $f(t)=0\,$ $\forall\,$ $t < a \,$)  | $f(t-a) \,$                                                       | $e^{-as}F(s) \,$                                                  |
+| Linearität                                                                | $a_{1}f_{1}(t)+a_{2} f_{2}(t)\,$                                  | $a_{1}F_{1}(s)+ a_{2} F_{2}(s)\,$                                 |
 
 
-1) Impuls zut Zeit $t_0$
-$$U(s)=e^{-t_0s}$$
+1) Impuls zut Zeit $t_0$: $\quad U(s)=e^{-t_0s}$
 
-2) Sprung zur Zeit $t_0$
-$$U(s)=\frac{1}{s}e^{-t_0s}$$
+2) Sprung der Höhe $\hat{F}$ zur Zeit $t_0$: $\quad U(s)=\hat{F}\,\frac{1}{s}e^{-t_0s}$
+ 
+ ----
 
-Erst mal umformen
+## Beispiel 1: Fahrzeugmodell 4/ 
+#### Ausgangssignal im Bildbereich
 
+1.   System umformen
 $$
 \begin{gather}
 s\,V(s) = \frac{b}{m}\cdot V(s)  +  \frac{1}{m}\,U(s)\\
@@ -168,7 +194,12 @@ V(s) = \frac{\frac{1}{m}}{\left(s-\frac{b}{m}\right)}\,U(s)
 \end{gather}
 $$
 
-Eingang rein:
+---
+
+## Beispiel 1: Fahrzeugmodell 5/ 
+#### Ausgangssignal im Bildbereich
+
+Mit dem Eingangssignal: $\quad U(s)=e^{-t_0s}$
 $$
 V(s) = \frac{\frac{1}{m}}{\left(s-\frac{b}{m}\right)}\,e^{-t_0s}
 $$
@@ -178,13 +209,19 @@ $$
 | Exponentialfunktion                           | $e^{-at}\,$                                                       | $\frac{1}{s+a}$                                         |
 | Verschiebung im Originalbereich (bei einseitiger Transformation nur $a > 0 \,$ oder $f(t)=0\,$ $\forall\,$ $t < a \,$)  | $f(t-a) \,$                                                       | $e^{-as}F(s) \,$                                                  |
 
+Rücktransformiert im Zeitbereich:
 $$
 v(t) = \frac{1}{m}e^{-\frac{b}{m}(t-t_0)}
 $$
 
-Eingang rein:
+----
+
+## Beispiel 1: Fahrzeugmodell 6/ 
+### Ausgangssignal im Bildbereich
+
+Mit dem Eingangssignal: $\quad U(s)=\hat{F}\,\frac{1}{s}e^{-t_0s}$
 $$
-V(s) = \frac{\frac{1}{m}}{\left(s-\frac{b}{m}\right)}\,\frac{1}{s}e^{-t_0s}
+V(s) = \frac{\frac{1}{m}}{\left(s-\frac{b}{m}\right)}\,\hat{F}\,\frac{1}{s}e^{-t_0s}
 $$
 
 | Funktionsname                                  | Originalfunktion   | Bildfunktion   |
@@ -192,13 +229,27 @@ $$
 | Exponentialverteilung                        | $1-e^{-at}\,$                                                     | $\frac{a}{s(s+a)}$                                      |
 | Verschiebung im Originalbereich (bei einseitiger Transformation nur $a > 0 \,$ oder $f(t)=0\,$ $\forall\,$ $t < a \,$)  | $f(t-a) \,$                                                       | $e^{-as}F(s) \,$                                                  |
 
+Rücktransformiert im Zeitbereich:
 $$
-v(t) = \frac{1}{b}\left(1-e^{-\frac{b}{m}\,(t-t_0)}\right)
+v(t) = \frac{\hat{F}}{b}\left(1-e^{-\frac{b}{m}\,(t-t_0)}\right)
 $$
 
+
+---
 
 ## Erkenntnisse
 - Keine Integration erforderlich
-- 
+
+ ![Quelle: springer.com](Pasted%20image%2020210131074116.png)
+
+| |Impuls | Sprung |
+|----|----|---|
+|Eingangssignal|$u(t)=δ(t-t_0)$|$u(t)=Θ(t-t_0)$|
+|Ausgangssignal|$v(t) = \frac{1}{m}e^{-\frac{b}{m}(t-t_0)}$  Impulsantwort |$v(t) = \frac{1}{b}\left(1-e^{-\frac{b}{m}\,(t-t_0)}\right)$ Sprungantwort|
+
+- genau genommen ist die Sprungantwort (i.d.R. $h(t)$) die Reaktion auf den Einheitssprung (Höhe 1,  Zeitpunkt 0)
+- Impulsantwort (≙Gewichtsfunktion) (i.d.R. $g(t)$)  ist die zeitliche Ableitung der Sprungantwort
+
 ----
+
 ## Literatur
