@@ -85,6 +85,14 @@ $$
 $K=500$|$K=1000$|$K=2000$
 ---|---|---
 $y(t)=7.27- 2.27\,{{\rm e}^{- 0.550\,t}}$| y(t)=$7.62- 2.62\,{{\rm e}^{- 1.05\,t}}$ | $y(t)=7.80- 2.80\,{{\rm e}^{- 2.05\,t}}$
+
+---
+
+ ## Beispiel 1: Geschwindigkeitsregelung 3/
+ $K=500$|$K=1000$|$K=2000$
+---|---|---
+$y(t)=7.27- 2.27\,{{\rm e}^{- 0.550\,t}}$| y(t)=$7.62- 2.62\,{{\rm e}^{- 1.05\,t}}$ | $y(t)=7.80- 2.80\,{{\rm e}^{- 2.05\,t}}$
+
 ![Fahrzeuggeschwindigkeit für verschiedene Verstärkungen des P-Reglers](Fahrzeuggeschwindigkeiten%20mit%20P%20Regler.png) 
 
 - Verstärkung wirkt auf Dynamik und Statik 
@@ -94,7 +102,7 @@ $y(t)=7.27- 2.27\,{{\rm e}^{- 0.550\,t}}$| y(t)=$7.62- 2.62\,{{\rm e}^{- 1.05\,t
 
 ---
 
-## Beispiel 1: Geschwindigkeitsregelung 3/
+## Beispiel 1: Geschwindigkeitsregelung 4/
 Ergänzung eines Integrators in der  Regeleinrichtung: 
 $$u(t) = K_P \cdot e(t) + K_I \cdot \int e(t)\,dt$$
 
@@ -103,7 +111,7 @@ $$u(t) = K_P \cdot e(t) + K_I \cdot \int e(t)\,dt$$
 - Blockschaltbild: ![](PI-Regler.svg)
 ---
 
-## Beispiel 1: Geschwindigkeitsregelung 4/
+## Beispiel 1: Geschwindigkeitsregelung 5/
 Aufstellen der Differentialgleichung 2. Ordnung:
 1. Neuen Zustand einführen: $$
 \begin{eqnarray}
@@ -127,7 +135,7 @@ $${\frac {{\rm d}^{2}}{{\rm d}{t}^{2}}}y \left( t \right)\, m +  {\frac {\rm d}{
 
 ---
 
-## Beispiel 1: Geschwindigkeitsregelung 5/
+## Beispiel 1: Geschwindigkeitsregelung 6/
 $${\frac {{\rm d}^{2}}{{\rm d}{t}^{2}}}y \left( t \right)\, m +  {\frac {\rm d}{{\rm d}t}}y \left( t \right) \, \left( K_{P}+b \right)  + y \left( t \right)\,K_{I} = K_{P}\,{\frac {\rm d}{{\rm d}t}}w \left( t \right) +K_{I}\,w \left( t \right)$$
 
 Lösung für $b = 50$, $m = 1000$  $y(0) = 5$, $y'(0) = 0$ ,$$ w \left( t \right) =
@@ -142,7 +150,7 @@ $$\begin{align}u(t) = &400.0+ 620.0\,{{\rm e}^{- 0.28\,t}}\sin \left(  0.35\,t \
 
 ----
 
-## Beispiel 1: Geschwindigkeitsregelung 6/
+## Beispiel 1: Geschwindigkeitsregelung 7/
 - Gleiches Ein-/Ausgangsverhalten kann durch andere Strukturen erreicht werden
 
 **Vorsteuerung:** 
