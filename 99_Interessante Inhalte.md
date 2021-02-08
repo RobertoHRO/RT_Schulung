@@ -1,0 +1,4 @@
+- Hysterese
+- Zeitdiskrete Realisierung
+- Eigene Simulation in Schleife 
+- 

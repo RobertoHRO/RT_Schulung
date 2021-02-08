@@ -171,7 +171,7 @@ Nötige Korrespondenzen und Eigenschaften
 | -----------------------------------------------| ------------------------------------------------------------------| --------------------------------------------------------|
 | Diracsche Deltadistribution Einheitsimpuls   | $\delta(t)\,$     | $1\,$                                        |
 | Heavisidesche Sprungfunktion Einheitssprung  | $\Theta(t)\,$                                                     | $\frac{1}{s}$                                           |
-| Verschiebung im Originalbereich (bei einseitiger Transformation nur $a > 0 \,$ oder $f(t)=0\,$ $\forall\,$ $t < a \,$)  | $f(t-a) \,$                                                       | $e^{-as}F(s) \,$                                                  |
+| Verschiebung im Originalbereich (bei einse...)  | $f(t-a) \,$                                                       | $e^{-as}F(s) \,$                                                  |
 | Linearität                                                                | $a_{1}f_{1}(t)+a_{2} f_{2}(t)\,$                                  | $a_{1}F_{1}(s)+ a_{2} F_{2}(s)\,$                                 |
 
 
