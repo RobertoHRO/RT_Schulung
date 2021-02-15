@@ -50,22 +50,26 @@ Berechnet aus den Regelabweichungen die Stellgrößen.
 ![Blockschaltbild eines pH Wert Regelkreises  Quelle: Lunze 1 2016|400](Blockschaltbild_pH_Wert_Regler.png)
 
 ---
-## Beispiel 1: Geschwindigkeitsregelung 1/
+
+## Geschwindigkeitsregelung 1/
 Aufgabe: Fahrzeuggeschwindigkeit $y(t)$ soll einer zeitvariablen Führungsgröße $w(t)$ folgen.
 
 - Wechsel der Symbole: 
 
-$$\tfrac{d}{d\,t}v(t)  = - \frac{b}{m} v(t) + \frac{F_u}{m}$$  |![](Bilder_RT_3.svg)
----|---
-$$\tfrac{d}{d\,t}y(t) = -\frac{b}{m} y(t) + \frac{u(t)}{m}$$ | ![](Bilder_RT_4.svg)
+|$\tfrac{d}{d\,t}v(t)  = - \frac{b}{m} v(t) + \frac{F_u}{m}$  |![](Bilder_RT_3.svg)|
+|---|---|
+|$\tfrac{d}{d\,t}y(t) = -\frac{b}{m} y(t) + \frac{u(t)}{m}$   | ![](Bilder_RT_4.svg)|
 
-- Regelabweichung: $e(t) = w(t)-y(t)$
-- Regeleinrichtung: $u(t) = K \cdot e(t)$
-	- Verstärkung $K$ legt fest wie intensiv auf Regelabweichungen reagiert wird. 
+ Regelabweichung: $e(t) = w(t)-y(t)$
+ 
+ Regeleinrichtung: $u(t) = K \cdot e(t)$   
+ 
+ Verstärkung $K$ legt fest wie intensiv auf Regelabweichungen reagiert wird. 
  
  ---
  
- ## Beispiel 1: Geschwindigkeitsregelung 2/
+ ## Geschwindigkeitsregelung 2/
+ Regler in Strecke einsetzen:
  $$
 \begin{eqnarray}
 \tfrac{d}{d\,t}y(t) = -\frac{b}{m}\, y(t) + \frac{K}{m}\left(w(t)-y(t)\right)
@@ -82,13 +86,14 @@ $$\tfrac{d}{d\,t}y(t) = -\frac{b}{m} y(t) + \frac{u(t)}{m}$$ | ![](Bilder_RT_4.s
 $$y \left( t \right) ={w\cdot\frac {K}{b+K}}+{{\rm e}^{-{\frac { \left( b+K\right) t}{m}}}} \left( {\it y_0}-{w\cdot\frac {K}{b+K}} \right) 
 $$ 
 
-$K=500$|$K=1000$|$K=2000$
----|---|---
-$y(t)=7.27- 2.27\,{{\rm e}^{- 0.550\,t}}$| y(t)=$7.62- 2.62\,{{\rm e}^{- 1.05\,t}}$ | $y(t)=7.80- 2.80\,{{\rm e}^{- 2.05\,t}}$
+|$K=500$|$K=1000$|$K=2000$|
+|---|---|---|
+|$y(t)=7.27- 2.27\,{{\rm e}^{- 0.550\,t}}$| y(t)=$7.62- 2.62\,{{\rm e}^{- 1.05\,t}}$ | $y(t)=7.80- 2.80\,{{\rm e}^{- 2.05\,t}}$|
+
 
 ---
 
- ## Beispiel 1: Geschwindigkeitsregelung 3/
+ ## Geschwindigkeitsregelung 3/
  $K=500$|$K=1000$|$K=2000$
 ---|---|---
 $y(t)=7.27- 2.27\,{{\rm e}^{- 0.550\,t}}$| y(t)=$7.62- 2.62\,{{\rm e}^{- 1.05\,t}}$ | $y(t)=7.80- 2.80\,{{\rm e}^{- 2.05\,t}}$
@@ -102,16 +107,18 @@ $y(t)=7.27- 2.27\,{{\rm e}^{- 0.550\,t}}$| y(t)=$7.62- 2.62\,{{\rm e}^{- 1.05\,t
 
 ---
 
-## Beispiel 1: Geschwindigkeitsregelung 4/
+## Geschwindigkeitsregelung 4/
 Ergänzung eines Integrators in der  Regeleinrichtung: 
 $$u(t) = K_P \cdot e(t) + K_I \cdot \int e(t)\,dt$$
 
 - Jetzt wird die Stellgröße angepasst, bis die Regelabweichung verschwindet.
 - Der Integrator ist ein weiterer (System)-Zustand. 
 - Blockschaltbild: ![](PI-Regler.svg)
+- PI-Regler werden auch gern in der Form: $u(t) = K_P \cdot e(t) + \frac{1}{T_N} \cdot \int e(t)\,dt$ mit $T_N =1/K_I$ angegeben.
+
 ---
 
-## Beispiel 1: Geschwindigkeitsregelung 5/
+## Geschwindigkeitsregelung 5/
 Aufstellen der Differentialgleichung 2. Ordnung:
 1. Neuen Zustand einführen: $$
 \begin{eqnarray}
@@ -124,8 +131,8 @@ $$
 \begin {eqnarray} 
 {\frac {\rm d}{{\rm d}t}}y \left( t \right) 
 &=&-{\frac {by \left( t \right) }{m}}+{\frac {u \left( t \right) }{m}}\\ 
-{\frac {\rm d}{{\rm d}t}}{\it x1} \left( t \right) &=&e \left( t \right)\\
-u \left( t \right) &=&K_{I}\,{\it x1} \left( t
+{\frac {\rm d}{{\rm d}t}}{\it x_1} \left( t \right) &=&e \left( t \right)\\
+u \left( t \right) &=&K_{I}\,{\it x_1} \left( t
  \right) +K_{P}\,e \left( t \right) \\ 
  e \left( t \right) &=&w \left( t \right) -y \left( t \right) \\ 
 \end {eqnarray}
@@ -135,28 +142,44 @@ $${\frac {{\rm d}^{2}}{{\rm d}{t}^{2}}}y \left( t \right)\, m +  {\frac {\rm d}{
 
 ---
 
-## Beispiel 1: Geschwindigkeitsregelung 6/
+## Geschwindigkeitsregelung 6/
 $${\frac {{\rm d}^{2}}{{\rm d}{t}^{2}}}y \left( t \right)\, m +  {\frac {\rm d}{{\rm d}t}}y \left( t \right) \, \left( K_{P}+b \right)  + y \left( t \right)\,K_{I} = K_{P}\,{\frac {\rm d}{{\rm d}t}}w \left( t \right) +K_{I}\,w \left( t \right)$$
 
 Lösung für $b = 50$, $m = 1000$  $y(0) = 5$, $y'(0) = 0$ ,$$ w \left( t \right) =
 \cases{5&$t<0$\cr {\it undefined}&$t=0$\cr 8&$0<t$\cr}$$
 
+$K_P = 500$ , $K_I = 200$
 
-$K_P = 500$ , $K_I = 200$|$K_P = 500$ , $K_I = 100$
----|---
-![](Fahrzeug_Regel_200.png) |![](Fahrzeug_Regel_100.png)
-![](Fahrzeug_Stell_200.png) |![](Fahrzeug_Stell_100.png)
-$$\begin{align}u(t) = &400.0+ 620.0\,{{\rm e}^{- 0.28\,t}}\sin \left(  0.35\,t \right) \\&+ 1400.0\,{{\rm e}^{- 0.28\,t}}\cos \left(  0.35\,t \right)\end{align}$$ | $$\begin{align}u(t)=&400.0- 500.0\,{{\rm e}^{- 0.28\,t}}\sin \left(  0.16\,t \right) \\&+1400.0\,{{\rm e}^{- 0.28\,t}}\cos \left(  0.16\,t \right)\end{align}$$
+|![](Fahrzeug_Stell_200.png)|![](Fahrzeug_Regel_200.png)|
+|---|---|
 
-----
+$$u(t) = 400.0+ 620.0\,{{\rm e}^{- 0.28\,t}}\sin \left(  0.35\,t \right) + 1400.0\,{{\rm e}^{- 0.28\,t}}\cos \left(  0.35\,t \right)$$ 
 
-## Beispiel 1: Geschwindigkeitsregelung 7/
-- Gleiches Ein-/Ausgangsverhalten kann durch andere Strukturen erreicht werden
+---
+
+## Geschwindigkeitsregelung 7/
+$${\frac {{\rm d}^{2}}{{\rm d}{t}^{2}}}y \left( t \right)\, m +  {\frac {\rm d}{{\rm d}t}}y \left( t \right) \, \left( K_{P}+b \right)  + y \left( t \right)\,K_{I} = K_{P}\,{\frac {\rm d}{{\rm d}t}}w \left( t \right) +K_{I}\,w \left( t \right)$$
+
+Lösung für $b = 50$, $m = 1000$  $y(0) = 5$, $y'(0) = 0$ ,$$ w \left( t \right) =
+\cases{5&$t<0$\cr {\it undefined}&$t=0$\cr 8&$0<t$\cr}$$
+
+$K_P = 500$ , $K_I = 100$
+
+|![](Fahrzeug_Stell_100.png)|![](Fahrzeug_Regel_100.png)|
+|---|---|
+
+$$u(t)=400.0- 500.0\,{{\rm e}^{- 0.28\,t}}\sin \left(  0.16\,t \right)+1400.0\,{{\rm e}^{- 0.28\,t}}\cos \left(  0.16\,t \right)$$
+
+---
+
+## Geschwindigkeitsregelung 8/
+
+Gleiches Ein-/Ausgangsverhalten kann durch andere Strukturen erreicht werden
 
 **Vorsteuerung:** 
 ![](Bilder_RT_5.svg)
 
-Die DGL: $${\frac {{\rm d}^{2}}{{\rm d}{t}^{2}}}u \left( t \right)\,m + {\frac {\rm d}{{\rm d}t}}u \left( t \right) \, \left( K_{P}+b \right) +u \left( t \right)\,K_{I}= {\frac {{\rm d}^{2}}{{\rm d}{t}^{2}}}w \left( t \right)\,K_{P}\,m + {\frac {\rm d}{{\rm d}t}}w \left( t \right) \, \left( K_{I}\,m+K_{P}\,b \right) + w \left( t \right)\,K_{I}\,b
+Ohne Herleitung sei hier angemerkt: Die DGL: $${\frac {{\rm d}^{2}}{{\rm d}{t}^{2}}}u \left( t \right)\,m + {\frac {\rm d}{{\rm d}t}}u \left( t \right) \, \left( K_{P}+b \right) +u \left( t \right)\,K_{I}= {\frac {{\rm d}^{2}}{{\rm d}{t}^{2}}}w \left( t \right)\,K_{P}\,m + {\frac {\rm d}{{\rm d}t}}w \left( t \right) \, \left( K_{I}\,m+K_{P}\,b \right) + w \left( t \right)\,K_{I}\,b
 $$ erzeugt aus der Führungsgröße $$ w \left( t \right) =
 \cases{5&$t<0$\cr {\it undefined}&$t=0$\cr 8&$0<t$\cr}$$ und passenden Anfangsbedingungen die gleichen Stellgrößen $u(t)$ wie der Regelkreis.
 

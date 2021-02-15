@@ -19,27 +19,23 @@ $$
 
 MEGA WICHTIG: Das Modell gilt nur für $i_3=0$! - (Rückwirkungsfreiheit!!!)
 
-**Aufgabe:** 
-Mit den Korrespondenzen soll die Ausgangsspannung nach einem:
+**Aufgabe:**  Berechne die Ausgangsspannung nach einem:
 1) Spannungsimpuls zur Zeit $t_0$  
-2) einem Spannungssprung  der Höhe 1 zur Zeit $t_0$  
+2) Spannungssprung  der Höhe 1 zur Zeit $t_0$  
 
-berechnet werden.
 
 ---
 ## Einführungsbeispiel Reihenschwingkreis 2/
-#### Transformation in des Systems in den Bildbereich
-
+#### Transformation des Systems in den Bildbereich
 Differentialgleichung im Zeitbereich:
 $$
 \begin{eqnarray}
 C\,L\frac{d^2}{dt^2}y(t)+C\,R\frac{d}{dt}y(t)+y(t) &=& C\,R\frac{d}{dt}u(t)+u(t)
 \end{eqnarray}
 $$
-
 Nötige Korrespondenzen und Eigenschaften:
 
-|                                                                                   | Originalfunktion $f(t) = \mathcal{L}^{-1} \left\{ F(s) \right\}$  | Bildfunktion $F(s) = \mathcal{L}\left\{ f(t) \right\}$            |
+|                                                                                   | Originalfunktion   | Bildfunktion         |
 | ------------------------------------------------------------------------------------------------------------------------| ------------------------------------------------------------------| ------------------------------------------------------------------|
 | 1\. Ableitung im OB                                                                                      | $f'(t) \,$                                                        | $sF(s)-f(0) \,$                                                   |
 | 2\. Ableitung im OB                                                                                      | $f''(t) \,$                                                       | $s^{2}F(s)-sf(0)-f'(0) \,$                                        |
@@ -54,7 +50,8 @@ $$
 ---
 
 ## Einführungsbeispiel Reihenschwingkreis 3/
-#### Umformen
+#### Transformation des Systems in den Bildbereich
+Umformen
 $$
 \begin{eqnarray}
 C\,L\,s^2\,Y(s)+C\,R\,s\,Y(s)+Y(s) &=& C\,R\,s\,U(s) + U(s) \\[1ex]
@@ -64,7 +61,7 @@ $$
 
 $$Y(s)=\underbrace{\frac{C\,R\,s + 1}{C\,L\,s^2+C\,R\,s+1}}_{\huge G(s)}\,U(s)$$
 
-- $G(s)$ wird als Übertragungsfunktion bezeichnet.
+$G(s)$ wird als Übertragungsfunktion bezeichnet.
 
 
 ---
@@ -72,10 +69,9 @@ $$Y(s)=\underbrace{\frac{C\,R\,s + 1}{C\,L\,s^2+C\,R\,s+1}}_{\huge G(s)}\,U(s)$$
 ## Einführungsbeispiel Reihenschwingkreis 4/
 #### Eingangssignal im Bildbereich
 
-**Aufgabe:** 
-Mit den Korrespondenzen soll die Ausgangsspannung nach einem:
+**Aufgabe:**  Berechne die Ausgangsspannung nach einem:
 1) Spannungsimpuls zur Zeit $t_0$  
-2) einem Spannungssprung  der Höhe 1 zur Zeit $t_0$  
+2) Spannungssprung  der Höhe 1 zur Zeit $t_0$  
 
 --> Kurze Zwischenaufgabe: Benenne die Laplacetransformierten von Dirac-Impuls und Einheitssprung!
 
@@ -88,7 +84,7 @@ Eingangssignal festlegen
 
 1) Impuls zut Zeit $t_0$:  $\quad u(t)=δ(t-t_0)$
 
-2) Sprung der Höhe 1  zur Zeit $t_0$:  $\quad u(t)=\hat{F}\,Θ(t-t_0)$
+2) Sprung der Höhe 1  zur Zeit $t_0$:  $\quad u(t)=Θ(t-t_0)$
 
 Nötige Korrespondenzen und Eigenschaften
 
@@ -116,12 +112,12 @@ $$Y(s)=\frac{C\,R\,s + 1}{C\,L\,s^2+C\,R\,s+1}\,e^{-t_0s}$$
 
 Rücktransformiert in den Zeitbereich ergibt:
 
-$$y(t)=\frac{\theta (t-\text{t0}) e^{-\frac{\left(\sqrt{\text{CR}^2-4 \text{CL}}+\text{CR}\right) (t-\text{t0})}{2 \text{CL}}} \left(\text{CR} \left(\sqrt{\text{CR}^2-4 \text{CL}}-\text{CR}\right) e^{\frac{\sqrt{\text{CR}^2-4 \text{CL}} (t-\text{t0})}{\text{CL}}}+2 \text{CL} \left(e^{\frac{\sqrt{\text{CR}^2-4 \text{CL}} (t-\text{t0})}{\text{CL}}}-1\right)+\text{CR} \left(\sqrt{\text{CR}^2-4 \text{CL}}+\text{CR}\right)\right)}{2 \text{CL} \sqrt{\text{CR}^2-4 \text{CL}}}$$
+$$\tiny y(t)=\frac{\theta (t-\text{t0}) e^{-\frac{\left(\sqrt{\text{CR}^2-4 \text{CL}}+\text{CR}\right) (t-\text{t0})}{2 \text{CL}}} \left(\text{CR} \left(\sqrt{\text{CR}^2-4 \text{CL}}-\text{CR}\right) e^{\frac{\sqrt{\text{CR}^2-4 \text{CL}} (t-\text{t0})}{\text{CL}}}+2 \text{CL} \left(e^{\frac{\sqrt{\text{CR}^2-4 \text{CL}} (t-\text{t0})}{\text{CL}}}-1\right)+\text{CR} \left(\sqrt{\text{CR}^2-4 \text{CL}}+\text{CR}\right)\right)}{2 \text{CL} \sqrt{\text{CR}^2-4 \text{CL}}}$$
 
 
 ---
 
-## Einführungsbeispiel Reihenschwingkreis 5/
+## Einführungsbeispiel Reihenschwingkreis 7/
 #### Ausgangssignal
 
 $$Y(s)=\frac{C\,R\,s + 1}{C\,L\,s^2+C\,R\,s+1}\,U(s)$$
@@ -132,7 +128,7 @@ $$Y(s)=\frac{C\,R\,s + 1}{C\,L\,s^2+C\,R\,s+1}\,\frac{1}{s}e^{-t_0s}$$
 
 Rücktransformiert in den Zeitbereich ergibt:
 
-$$y(t)=-\frac{\theta (t-\text{t0}) e^{-\frac{\left(\sqrt{\text{CR}^2-4 \text{CL}}+\text{CR}\right) (t-\text{t0})}{2 \text{CL}}} \left(\text{CR} \left(-e^{\frac{\sqrt{\text{CR}^2-4 \text{CL}} (t-\text{t0})}{\text{CL}}}\right)+\sqrt{\text{CR}^2-4 \text{CL}} \left(e^{\frac{\sqrt{\text{CR}^2-4 \text{CL}} (t-\text{t0})}{\text{CL}}}-2 e^{\frac{\left(\sqrt{\text{CR}^2-4 \text{CL}}+\text{CR}\right) (t-\text{t0})}{2 \text{CL}}}+1\right)+\text{CR}\right)}{2 \sqrt{\text{CR}^2-4 \text{CL}}}$$
+$$\tiny y(t)=-\frac{\theta (t-\text{t0}) e^{-\frac{\left(\sqrt{\text{CR}^2-4 \text{CL}}+\text{CR}\right) (t-\text{t0})}{2 \text{CL}}} \left(\text{CR} \left(-e^{\frac{\sqrt{\text{CR}^2-4 \text{CL}} (t-\text{t0})}{\text{CL}}}\right)+\sqrt{\text{CR}^2-4 \text{CL}} \left(e^{\frac{\sqrt{\text{CR}^2-4 \text{CL}} (t-\text{t0})}{\text{CL}}}-2 e^{\frac{\left(\sqrt{\text{CR}^2-4 \text{CL}}+\text{CR}\right) (t-\text{t0})}{2 \text{CL}}}+1\right)+\text{CR}\right)}{2 \sqrt{\text{CR}^2-4 \text{CL}}}$$
 
 ---
 
