@@ -50,7 +50,7 @@ $$
 	- Bildbereich bekommen Großbuchstaben $Y(s)$, $U(s)$, $G(s)$
 - Verbreitet sind diese Notationen für die Transformationen: $$f(t)\;\laplace\;F(s)$$$$F(s)\;\Laplace\;f(t)$$
 
-BTW: Gleiche Notation wird auch für die Fourier-Transformation verwendet:
+BTW: Selbe Notation wird auch für die Fourier-Transformation verwendet:
 - $Y(jω)$, $U(jω)$, $G(jω)$ 
 - $f(t)\;\laplace\;F(jω)$, $\qquad F(jω)\;\Laplace\;f(t)$
 
@@ -150,7 +150,7 @@ mit der Korrespondenz
 | 1\. Ableitung im Originalbereich                                                                                      | $f'(t) \,$                                                        | $sF(s)-f(0) \,$                                                   |
 
 ergibt sich im Bildbereich diese algebraische Gleichung:
-$$s\,V(s) = \frac{b}{m}\cdot V(s)  +  \frac{1}{m}\,U(s)$$
+$$s\,V(s) = -\frac{b}{m}\cdot V(s)  +  \frac{1}{m}\,U(s)$$
 (Wir nehmen an: $f(0) = 0$)
 
 ---
@@ -164,9 +164,6 @@ Eingangssignal festlegen
 
 2) Sprung der Höhe $\hat{F}$ zur Zeit $t_0$:  $\quad u(t)=\hat{F}\,Θ(t-t_0)$
 
-Nötige Korrespondenzen und Eigenschaften
-
-
 | Funktionsname                                  | Originalfunktion   | Bildfunktion   |
 | -----------------------------------------------| ------------------------------------------------------------------| --------------------------------------------------------|
 | Diracsche Deltadistribution Einheitsimpuls   | $\delta(t)\,$     | $1\,$                                        |
@@ -175,7 +172,7 @@ Nötige Korrespondenzen und Eigenschaften
 | Linearität                                                                | $a_{1}f_{1}(t)+a_{2} f_{2}(t)\,$                                  | $a_{1}F_{1}(s)+ a_{2} F_{2}(s)\,$                                 |
 
 
-1) Impuls zut Zeit $t_0$: $\quad U(s)=e^{-t_0s}$
+1) Impuls zur Zeit $t_0$: $\quad U(s)=e^{-t_0s}$
 
 2) Sprung der Höhe $\hat{F}$ zur Zeit $t_0$: $\quad U(s)=\hat{F}\,\frac{1}{s}e^{-t_0s}$
  
@@ -187,10 +184,10 @@ Nötige Korrespondenzen und Eigenschaften
 1.   System umformen
 $$
 \begin{gather}
-s\,V(s) = \frac{b}{m}\cdot V(s)  +  \frac{1}{m}\,U(s)\\
-s\,V(s) - \frac{b}{m}\cdot V(s) = \frac{1}{m}\,U(s)\\
-V(s) \left(s-\frac{b}{m}\right) = \frac{1}{m}\,U(s)\\
-V(s) = \frac{\frac{1}{m}}{\left(s-\frac{b}{m}\right)}\,U(s)
+s\,V(s) = -\frac{b}{m}\cdot V(s)  +  \frac{1}{m}\,U(s)\\
+s\,V(s) + \frac{b}{m}\cdot V(s) = \frac{1}{m}\,U(s)\\
+V(s) \left(s+\frac{b}{m}\right) = \frac{1}{m}\,U(s)\\
+V(s) = \frac{\frac{1}{m}}{\left(s+\frac{b}{m}\right)}\,U(s)
 \end{gather}
 $$
 
@@ -201,7 +198,7 @@ $$
 
 Mit dem Eingangssignal: $\quad U(s)=e^{-t_0s}$
 $$
-V(s) = \frac{\frac{1}{m}}{\left(s-\frac{b}{m}\right)}\,e^{-t_0s}
+V(s) = \frac{\frac{1}{m}}{\left(s+\frac{b}{m}\right)}\,e^{-t_0s}
 $$
 
 | Funktionsname                                  | Originalfunktion   | Bildfunktion   |
@@ -221,7 +218,7 @@ $$
 
 Mit dem Eingangssignal: $\quad U(s)=\hat{F}\,\frac{1}{s}e^{-t_0s}$
 $$
-V(s) = \frac{\frac{1}{m}}{\left(s-\frac{b}{m}\right)}\,\hat{F}\,\frac{1}{s}e^{-t_0s}
+V(s) = \frac{\frac{1}{m}}{\left(s+\frac{b}{m}\right)}\,\hat{F}\,\frac{1}{s}e^{-t_0s}
 $$
 
 | Funktionsname                                  | Originalfunktion   | Bildfunktion   |
@@ -238,9 +235,8 @@ $$
 ---
 
 ## Erkenntnisse
-- Keine Integration erforderlich
 
- ![Quelle: springer.com](Pasted%20image%2020210131074116.png)
+ ![Quelle: springer.com\|600](Pasted%20image%2020210131074116.png)
 
 | |Impuls | Sprung |
 |----|----|---|

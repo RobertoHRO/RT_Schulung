@@ -39,7 +39,7 @@ Impuls mit unendlichem Augenblickswert in verschwindend geringer Zeit und der Fl
 $$ \delta(t) = \begin{cases} +\infty, & t = 0 \\ 0, & t \ne 0 \end{cases} \qquad \int_{-\infty}^{+\infty}\delta(t){\rm d}t = 1$$
 
 
-### Impulsantwort g(t)
+### Impulsantwort, Gewichtsfunktion g(t)
 Systemantwort aus der Ruhelage in $y(t)=0 \quad \text{für}\; t < 0$ auf einen Dirac-Impuls
 **Beispiel** Fahrzeuggeschwindigkeit:
  $$\dt v(t)  =- \frac{b}{m}\cdot v(t)+  \frac{\delta(t)}{m} \quad \rightarrow \quad y(t)=g(t)={\frac {1}{m}{{\rm e}^{-{\frac {tb}{m}}}}}$$ 
@@ -47,6 +47,7 @@ Systemantwort aus der Ruhelage in $y(t)=0 \quad \text{für}\; t < 0$ auf einen D
 ![](Fahrzeuggeschwindigkeit%20Impulsantwort.png)
 
  ---
+ 
  
 ## Superposition
 
@@ -105,8 +106,37 @@ fertig!  --> Warum ist die Linearität so eine wichtige Eigenschaft?
 
 ---
 
+## Ausblendeigenschaft 1/2
+Die Ausblendeigenschaft des Dirac-Impulses brauchen wir später - deswegen hier die Herleitung.
+
+Es wird das Integral analysiert:
+ $$\int_{-\infty}^{+\infty}f(t)\delta(t){\rm d}t$$
+
+Wir ersetzen $\delta(t)$ durch einen Rechteckimpuls: 
+$$x(t)=\begin{cases}\frac{1}{T_0} & 0\leq t< T_0\\0 & \textsf{sonst}\end{cases}$$ 
+Es ergibt sich:
+$$\begin{align}\int_{0}^{T_0}f(t)\frac{1}{T_0}{\rm d}t &= \frac{1}{T_0}\int_{0}^{T_0}f(t){\rm d}t\\
+  &=\frac{F(T_0)-F(0)}{T0}\\
+\end{align}
+$$
+
+---
+
+ ## Ausblendeigenschaft 2/2
+Die Rechteckbreite $T_0$ wird reduziert $T_0\rightarrow 0$:
+$$\lim_{T_0\rightarrow 0}\left(\frac{F(T_0)-F(0)}{T0}\right)=f(0)\qquad\textsf{es folgt:}\qquad
+\int_{-\infty}^{+\infty}f(t)\delta(t){\rm d}t = f(0)$$
+
+Für verschobene Dirac-Impulse gilt:
+$$\int_{-\infty}^{+\infty}f(t)\delta(t-τ){\rm d}t = f(τ) \qquad \textsf{wechsel\;} t \textsf{\;und\;} τ \qquad \boxed{\int_{-\infty}^{+\infty}f(τ)\delta(τ-t){\rm d}τ = f(t)} $$
+   
+
+Das ist die Ausblendeigenschaft in der benötigten Form.
+
+ ---
+ 
 ## Übergang zur Faltung
-Einführung Schreibweise nach: [Girod 2003](Girod2003.md)
+Einführung Schreibweise nach: [^Girod2003]
 $$
 u(t) \longrightarrow\!\boxed{\Large \text{lin. Sys }\mathcal{S}}\!\longrightarrow y(t) \qquad \text{wird zu} \qquad y(t) = \mathcal{S}\left\{u(t)\right\}
 $$
@@ -115,20 +145,27 @@ Mit der Ausblendeigenschaft des Dirc-Impulses: $$u(t)=\!\int\limits_{-\infty}^{+
 Im Integral hängt nur $δ(t-τ)$ von $t$ ab; die Werte $u(τ)$ sind bezüglich $t$ nur Gewichtsfaktoren. Wegen der Linearität des Systems gilt daher
 $$y(t) = \int\limits_{-\infty}^{+\infty}\!u(τ)\cdot \mathcal{S}\left\{δ(t-τ)\right\} {\rm d}τ\qquad \Large{⇨}\normalsize \qquad \boxed{y(t) = \int\limits_{-\infty}^{+\infty}\!u(τ)\cdot g(t-τ) {\rm d}τ}$$
 
+[^Girod2003]: Girod, Bernd: "Einführung in die Systemtheorie: Signale und Systeme in der Elektrotechnik und Informationstechnik"; 2003; DOI: 10.1007/978-3-322-99346-5; ISBN: 978-3-322-99346-5
+
+
+---
+## Übergang zur Faltung
+Wenn für den Eingang für  $t<0$ das gilt: $u(t)=0$, halbiert sich der Integrationsaufwand:
+$$
+y(t)=\!\int\limits_{0}^{+\infty}\!u(τ)\cdot g(t-τ) {\rm d}τ
+$$
+
+Noch einfacher wird es, wenn für $t<0$ die Gewichtfunktion null ist: $g(t)=0$. In diesem Fall spricht man von kausalen Systemen ([Kausalität](https://de.wikipedia.org/wiki/Systemtheorie_(Ingenieurwissenschaften)#Kausale_Systeme)) und die Faltung reduziert sich auf:
+$$
+\boxed{y(t)=\!\int\limits_{0}^{t}\!u(τ)\cdot g(t-τ) {\rm d}τ}
+$$
+
 
 ---
 
 ## Beispiel für die Überlagerung
-**Fahrzeugbeispiel** [Schnell mal die Impulsantwort berechnen](https://www.wolframalpha.com/input/?i=v%27+%2B+b%2Fm*v+%3D+Dirac%28t-10%29%2Fm%2C+v%280%29%3D0)
-- Eingang: $\quad\Large u(t) = α\cdot\delta(t-τ)$
-- Systemausgang entspricht der um τ verschobenen Impulsantwort/Gewichtsfunktion
-
-$$\quad\Large y(t) = θ(t - τ)\,\tfrac{α}{1000}\, e^{-\frac{1}{20}(t-τ)}$$
-
----
-
-## Beispiel für die Überlagerung
-### Zwei Impulse
+### Rechteck am Fahrzeugmodell: 
+$$u(t)=\begin{cases}1 & 100\leq t< 300\\0 & \textsf{sonst}\end{cases}$$ 
 
 |Eingang | Ausgang|
 |---|---|
@@ -139,7 +176,7 @@ $$y(t)=\tfrac{θ(t-100)}{50}\left(1-{\rm e}^{\frac{t-100}{20}}\right) - \tfrac{�
 ---
 
 ## Beispiel für die Überlagerung
-### Zwei Impulse
+### Schmaler rechteckförmiger Impuls
 
 |Eingang | Ausgang|
 |---|---|
@@ -150,7 +187,7 @@ $$y(t)=\tfrac{θ(t-100)}{50}\left(1-{\rm e}^{\frac{t-100}{20}}\right) - \tfrac{�
 ---
 
 ## Beispiel für die Überlagerung
-### Zwei Impulse
+### Approximationen 1/
 
 |Eingang | Ausgang|
 |---|---|
@@ -170,7 +207,7 @@ $$
 
 ---
 ## Beispiel für die Überlagerung
-### Zwei Impulse
+### Approximationen 2/
 
 |Eingang | Ausgang|
 |---|---|
@@ -178,7 +215,7 @@ $$
 
 ---
 ## Beispiel für die Überlagerung
-### Zwei Impulse
+### Approximationen 3/
 
 |Eingang | Ausgang|
 |---|---|
@@ -187,34 +224,17 @@ $$
 ---
 
 ## Beispiel für die Überlagerung
-### Zwei Impulse
+### Approximationen 4/
 
 |Eingang | Ausgang|
 |---|---|
 |![super_sin_5_u](super_sin_5_u.png) | ![super_sin_5_y](super_sin_5_y.png) |
 
-
 ---
-## Übergang zur Faltung
-Über Faltungsintegral kann der Ausgang y(t) für beliebige Eingangssignale u(t) und der Impulsantwort/Gewichtsfunktion berechnet werden.
-$$
-y(t)=\!\int\limits_{-\infty}^{+\infty}\!g(τ)\cdot u(t-τ) {\rm d}τ
-$$
 
-Wenn $u(t)<0$ für $t<0$:
-$$
-y(t)=\!\int\limits_{0}^{+\infty}\!g(τ)\cdot u(t-τ) {\rm d}τ
-$$
 
-Wenn $g(t)<0$ für $t<0$ ([Kausalität](https://de.wikipedia.org/wiki/Systemtheorie_(Ingenieurwissenschaften)#Kausale_Systeme)):
-$$
-y(t)=\!\int\limits_{0}^{t}\!g(τ)\cdot u(t-τ) {\rm d}τ
-$$
-
----
 
 ### Hinweise
-- Bisherige Methoden würden sehr viel "Integrationsarbeit" erfordern. 
-- ==Ausgänge können auch mit DLG berechnet werden==
+
 - Die Impulsantwort g(t) charakterisiert ein lineares zeitinvariantes System vollständig.
 - Bei linearen Systemen ist die Impulsantwort g(t) die zeitliche Ableitung der Sprungantwort h(t). 

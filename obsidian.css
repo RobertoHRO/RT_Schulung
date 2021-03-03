@@ -18,6 +18,10 @@
 	text-transform:none;
 }
 
+.reveal h5 {
+	text-align:left;
+	text-transform:none;
+}
 
 .reveal {
 	font-weight: 100;
