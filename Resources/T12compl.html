@@ -1,0 +1,119 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="jsxgraph.css" />
+<script type="text/javascript" src="jsxgraphcore.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<div id="jxgbox" class="jxgbox" style="width:700px; height:400px;"></div>
+<script type="text/javascript">
+
+function rnd(x) {
+  return Math.round(x*100)/100;
+}
+
+function T1(d,ω0) {
+    return -1/(-ω0.Value()*d.Value() - ω0.Value()*Math.sqrt(d.Value()*d.Value()-1));
+}
+function T2(d,ω0) {
+    return -1/(-ω0.Value()*d.Value() + ω0.Value()*Math.sqrt(d.Value()*d.Value()-1));
+}
+
+JXG.Options.text.cssClass = 'myDefaultFont';
+JXG.Options.text.useMathJax = true;
+
+var brd = JXG.JSXGraph.initBoard('jxgbox', {
+        boundingbox: [-1, 10, 10, -10], 
+        axis:true, 
+        showCopyright:false,
+        shownavigation:false,
+        pan: {enabled: false},
+
+        defaultAxes: {
+    x: {
+        name: 'x',
+        ticks: {
+            label: {
+                strokeColor: '#90A4AE',
+                fontSize: 14
+            }
+        }
+    },
+    y: {
+        name: 'y',
+        ticks: {
+            label: {
+                strokeColor: '#90A4AE',
+                fontSize: 14
+            }
+        }
+    }
+}})
+
+ks = brd.create('slider',[[2,-5],[7,-5],[-1,1,5]], {
+            name:'ks', 
+            snapwidth:0.01,
+            label: { highlightStrokeColor: 'rgb(207,216,220)', 
+                     strokeColor: 'rgb(207,216,220)', 
+                     fontSize:20},
+            strokeColor: 'rgb(207,216,220)',
+            baseline: {strokeColor: 'rgb(207,216,220)'},
+            highline: {strokeColor: 'rgb(207,216,220)'}
+          }),
+
+   d = brd.create('slider',[[2,-7],[7,-7],[-0.1,0.2,1]], {
+            name:'d', 
+            snapwidth:0.01,
+            label: { highlightStrokeColor: 'rgb(207,216,220)', 
+                     strokeColor: 'rgb(207,216,220)', 
+                     fontSize:20},
+            strokeColor: 'rgb(207,216,220)',
+            baseline: {strokeColor: 'rgb(207,216,220)'},
+            highline: {strokeColor: 'rgb(207,216,220)'}
+          }),
+    ω0 = brd.create('slider',[[2,-9],[7,-9],[0,8,10]], {
+            name:'ω0',
+            snapwidth:0.01,
+            label: { highlightStrokeColor: 'rgb(207,216,220)', 
+                     strokeColor: 'rgb(207,216,220)', 
+                     fontSize:20,
+                     useMathJax:true},
+            strokeColor: 'rgb(207,216,220)',
+            baseline: {strokeColor: 'rgb(207,216,220)'},
+            highline: {strokeColor: 'rgb(207,216,220)'}
+        }),
+
+        brd.create('text',[2,8,
+  function() { 
+    return '$$ G(s) = \\frac{' + rnd(ks.Value()) + '}{' +  rnd(1/ω0.Value()/ω0.Value())+ 's^2 + '+ rnd(2*d.Value()/ω0.Value()) +'s + 1} $$';
+  }], {strokeColor:'rgb(207,216,220)', fontSize:16});
+
+
+  brd.create('text',[2,5,
+  function() { 
+    return '$$ g(t) = ' +rnd(ks.Value()*ω0.Value()/Math.sqrt(1-d.Value()*d.Value())) + ' e^{'+ rnd(-d.Value()*ω0.Value()) + '\\,t}\\sin\\left(' + rnd(ω0.Value()*Math.sqrt(1-d.Value()*d.Value())) + '\\,t\\right)$$';
+
+  }], {strokeColor:'rgb(207,216,220)', fontSize:16});
+
+  f = brd.create('functiongraph',[function(t){
+            return (t>0)*(ks.Value()*ω0.Value()/Math.sqrt(1-d.Value()*d.Value())*Math.exp(-t*d.Value()*ω0.Value())); }], {strokeColor:'rgb(217,207,220)'});
+			
+    f = brd.create('functiongraph',[function(t){
+            return (t>0)*(-ks.Value()*ω0.Value()/Math.sqrt(1-d.Value()*d.Value())*Math.exp(-t*d.Value()*ω0.Value())); }], {strokeColor:'rgb(217,207,220)'});
+
+    f = brd.create('functiongraph',[function(t){
+            return (t>0)*(ks.Value()*ω0.Value()/Math.sqrt(1-d.Value()*d.Value())*Math.exp(-t*d.Value()*ω0.Value())*Math.sin(ω0.Value()*Math.sqrt(1-d.Value()*d.Value())*t)); }], {strokeColor:'rgb(207,216,220)',strokeWidth:3});
+    
+    brd.update();        
+</script>
+
+</body>
+</html> 
+
+

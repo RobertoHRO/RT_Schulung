@@ -6,11 +6,12 @@
       {
         "id": "79797d897c855f23",
         "type": "leaf",
-        "dimension": 50.103519668737064,
+        "dimension": 47.57281553398058,
+        "active": true,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Content/3_Modellbildung.md",
+            "file": "Content/8_Polstellen.md",
             "mode": "source"
           }
         },
@@ -19,12 +20,11 @@
       {
         "id": "482804c632658b1b",
         "type": "leaf",
-        "dimension": 49.896480331262936,
-        "active": true,
+        "dimension": 52.42718446601942,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Content/3_Modellbildung.md",
+            "file": "Content/8_Polstellen.md",
             "mode": "preview"
           }
         },
@@ -70,7 +70,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Content/3_Modellbildung.md"
+                "file": "Content/8_Polstellen.md"
               }
             }
           }
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 332
+    "width": 236
   },
   "right": {
     "id": "6ed33d025cb24143",
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Content/3_Modellbildung.md",
+                "file": "Content/8_Polstellen.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Content/3_Modellbildung.md"
+                "file": "Content/8_Polstellen.md"
               }
             }
           }
@@ -121,15 +121,15 @@
     "collapsed": true
   },
   "lastOpenFiles": [
-    "Content/3_Modellbildung.md",
-    "Notes/Untitled.md",
-    "Content/4_Erste_Regler.md",
-    "Content/2_Begriffe.md",
-    "Content/1_Agenda.md",
+    "Content/8_Polstellen.md",
+    "Content/Python Control Systems Library.md",
+    "Python Control Systems Library.md",
+    "Content/9_gekoppelte_lin_Systeme.md",
     "Content/7_Übertragungsfunktion.md",
     "Content/6_Laplace.md",
-    "Content/Lunze2016.md",
-    "Untitled 1.md",
-    "2_Begriffe.pdf"
+    "Content/Anti Wind Up.md",
+    "Untitled.md",
+    "Content/8b_Polstellen.md",
+    "Content/6b_Wolfram_Alpha.md"
   ]
 }

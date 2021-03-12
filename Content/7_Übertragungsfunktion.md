@@ -213,7 +213,7 @@ $$G(s) = k \cdot \frac{(s - s_{0,1})(s - s_{0,2} ) \dotsm (s - s_{0,m})}{(s - s_
 - "Polüberschuss" bzw "relativer Grad":  $d = n - m$ 
 - für reale, technische, realisierbare Systeme gilt immer $d>0$ 
 - Implementierung in Matlab, Octave, Python, …
-$$\mathtt{G=zpk([s_{0,1}, s_{0,2}, …, s_{0,m}], [s_{1}, s_{2}, …, s_{n}, k])}$$
+$$\mathtt{G=zpk([s_{0,1}, s_{0,2}, …, s_{0,m}], [s_{1}, s_{2}, …, s_{n}],k)}$$
 
 
 ---
@@ -239,10 +239,9 @@ Pole und Nullstellen sind also keine spezifischen Kenngrößen der Übertragungs
 
 Die Pole bestimmen die Exponenten der Modi $e^{-s_i\,t}$ und damit die Eigenbewegung und das Übergangsverhalten des Systems.
 
-Haben sämtliche Pole negativen Realteil, so klingt die Eigenbewegung ab; das System ist stabil
+Haben sämtliche Pole negativen Realteil, so klingt die Eigenbewegung ab; das System ist stabil.
 
-Die Pole eines Systems werden ausschließlich durch die physikalischen Wirkprinzipien bestimmt. Sie sind unabhängig von den Angriffspunkten der  
-Aktoren und Sensoren.
+Die Pole eines Systems werden ausschließlich durch die physikalischen Wirkprinzipien bestimmt. Sie sind unabhängig von den Angriffspunkten der Aktoren und Sensoren.
 
 Die Nullstellen hängen von den Eingriffspunkten des Stellgliedes und des Messgliedes. Dies gilt sowohl für die Anzahl der Nullstellen als auch für deren Wert.
 
@@ -262,8 +261,8 @@ Implementierung in Matlab, Octave, Python, …
 $$\mathtt{G=tf([b_{m}, b_{m-1}, …, b_{1}, b_{0}], [a_{n}, a_{n-1}, …, a_{1}, a_{0}])}$$
 
 
-Bei Realen System gilt immer:  $n \geq m$ 
-Begriff Polüberschuss: $d = n-m$ 
+- "Polüberschuss" bzw "relativer Grad":  $d = n - m$ 
+- für reale, technische, realisierbare Systeme gilt immer $d>0$ 
  
 ---
 
@@ -277,22 +276,11 @@ Begriff Polüberschuss: $d = n-m$
  
  
  $$G(s)=\frac{k}{s^l}\,\frac{\left(T_{0i}\,s+1\right)…\left(T_{0j}^2\,s^2+2\,d_{0j}\,T_{0j}\,s+1\right)}{\left(T_{k}\,s+1\right)…\left(T_{l}^2\,s^2+2\,d_{l}\,T_{l}\,s+1\right)}$$
- ---
- 
- ## Gekoppelte Systeme
- ### Reihenschaltung $\qquad G_R(s) = G_1(s)\,G_2(s)$
- ![Quelle: Lunze](Lunze_Reihenschaltung.png)
- 
- ### Parallelschalrung $\qquad G_R(s) = G_1(s) + G_2(s)$
- ![Quelle: Lunze](Lunze_Parallelschaltung.png)
- 
- ### Rückkopplungsschaltung $\qquad G_R(s) = \frac{G_1(s)}{1+ G_1(s)\,G_2(s)}$
- ![Quelle: Lunze](Lunze_R%C3%BCckkopplungsschaltung.png)
- 
-### Umformregeln für Blockschaltbilder
- ![Quelle: Lunze](Lunze_Umformregeln_BSB.png)
  
  
- ## Der Frequenzgang
+| C | L | R | F1 | F2 | Sprungantwort | Zeitkonstantenform |
+| - | - | - | -- | -- | -- | -- |
+| 1 | 2 | 4 | $\frac{4\,s + 1}{2\,s^2+4\,s+1}$| $2\,\frac{s+\frac{1}{4}}{\left(s+\frac{2-\sqrt{2}}{2}\right)\left(s+\frac{2+\sqrt{2}}{2}\right)}$ | ![RSK_step2\|100](RSK_step1.png) | $\frac{4\,s+1}{\left(\frac{2}{s-\sqrt{2}}s +1\right)\left(\frac{2}{s+\sqrt{2}}s +1\right)}$
+
+ Summenzeitkonstante:  $T_\Sigma = \frac{2}{2-\sqrt{2}}+\frac{2}{2+\sqrt{2}} - 4 = 0$  **schlechtes Beispiel**  🙄
  
- ![](Lunze_Frequenzgang.png)

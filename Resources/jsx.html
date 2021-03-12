@@ -1,0 +1,107 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<!-- <head>
+<meta charset="utf-8">
+ <link rel="stylesheet" type="text/css" href="https://jsxgraph.org/distrib/jsxgraph.css" />
+ <script type="text/javascript" src="https://jsxgraph.org/distrib/jsxgraphcore.js"></script>
+</head> -->
+
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="jsxgraph.css" />
+<script type="text/javascript" src="jsxgraphcore.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<div id="jxgbox" class="jxgbox" style="width:500px; height:400px;"></div>
+<script type="text/javascript">
+
+function rnd(x) {
+  return Math.round(x*100)/100;
+}
+
+JXG.Options.text.cssClass = 'myDefaultFont';
+JXG.Options.text.useMathJax = true;
+
+var brd = JXG.JSXGraph.initBoard('jxgbox', {
+        boundingbox: [-2, 10, 10, -10], 
+        axis:true, 
+        showCopyright:false,
+        shownavigation:false,
+        pan: {enabled: false},
+
+        defaultAxes: {
+    x: {
+        name: 'x',
+        ticks: {
+            label: {
+                strokeColor: '#90A4AE',
+                fontSize: 14
+            }
+        }
+    },
+    y: {
+        name: 'y',
+        ticks: {
+            label: {
+                strokeColor: '#90A4AE',
+                fontSize: 14
+            }
+        }
+    }
+}})
+
+
+   σ = brd.create('slider',[[2,-7],[7,-7],[-1,1,5]], {
+            name:'σ', 
+            snapwidth:0.01,
+            label: { highlightStrokeColor: 'rgb(207,216,220)', 
+                     strokeColor: 'rgb(207,216,220)', 
+                     fontSize:20},
+            strokeColor: 'rgb(207,216,220)',
+            baseline: {strokeColor: 'rgb(207,216,220)'},
+            highline: {strokeColor: 'rgb(207,216,220)'}
+          }),
+    ωd = brd.create('slider',[[2,-9],[7,-9],[0,5,10]], {
+            name:'ωd',
+            snapwidth:0.01,
+            label: { highlightStrokeColor: 'rgb(207,216,220)', 
+                     strokeColor: 'rgb(207,216,220)', 
+                     fontSize:20,
+                     useMathJax:true},
+            strokeColor: 'rgb(207,216,220)',
+            baseline: {strokeColor: 'rgb(207,216,220)'},
+            highline: {strokeColor: 'rgb(207,216,220)'}
+        }),
+
+        brd.create('text',[2,8,
+  function() { 
+    return '$$ G(s) = \\frac{' + rnd(ωd.Value()*ωd.Value()) + '}{\\left(s + ' + rnd(σ.Value()) + '\\right)^2 + ' + rnd(ωd.Value()*ωd.Value()) + '} $$';
+  }], {strokeColor:'rgb(207,216,220)', fontSize:16});
+
+
+  brd.create('text',[2,5,
+  function() { 
+    return '$$ g(t) = ' + rnd(ωd.Value()) + ' \\,e^{-' + rnd(σ.Value()) + 't}\\sin(' + rnd(ωd.Value()) + '\\,t)$$';
+  }], {strokeColor:'rgb(207,216,220)', fontSize:16});
+
+    f = brd.create('functiongraph',[function(t){
+            return (t>0)*(ωd.Value()*Math.exp(-σ.Value()*t)); }], {strokeColor:'rgb(217,207,220)'});
+			
+    f = brd.create('functiongraph',[function(t){
+            return (t>0)*(-ωd.Value()*Math.exp(-σ.Value()*t)); }], {strokeColor:'rgb(217,207,220)'});
+			
+    f = brd.create('functiongraph',[function(t){
+            return (t>0)*(ωd.Value()*Math.exp(-σ.Value()*t)*Math.sin(ωd.Value()*t)); }], {strokeColor:'rgb(207,216,220)',strokeWidth:3});
+    
+    brd.update();        
+</script>
+
+</body>
+</html> 
+
+
