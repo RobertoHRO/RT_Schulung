@@ -86,7 +86,6 @@ So wird installiert: [Python Control Systems Library](Python%20Control%20Systems
 
 
 ```Python
-import os
 from control.matlab import *
 import matplotlib.pyplot as plt  
 

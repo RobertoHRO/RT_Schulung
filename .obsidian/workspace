@@ -6,12 +6,11 @@
       {
         "id": "79797d897c855f23",
         "type": "leaf",
-        "dimension": 47.57281553398058,
-        "active": true,
+        "dimension": 52.92697646348823,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Content/8_Polstellen.md",
+            "file": "Content/10_Typ_1_WEA.md",
             "mode": "source"
           }
         },
@@ -20,11 +19,12 @@
       {
         "id": "482804c632658b1b",
         "type": "leaf",
-        "dimension": 52.42718446601942,
+        "dimension": 47.07302353651176,
+        "active": true,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Content/8_Polstellen.md",
+            "file": "Content/10_Typ_1_WEA.md",
             "mode": "preview"
           }
         },
@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "Linearisie",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,7 +70,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Content/8_Polstellen.md"
+                "file": "Content/10_Typ_1_WEA.md"
               }
             }
           }
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Content/8_Polstellen.md",
+                "file": "Content/10_Typ_1_WEA.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +109,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Content/8_Polstellen.md"
+                "file": "Content/10_Typ_1_WEA.md"
               }
             }
           }
@@ -121,15 +121,15 @@
     "collapsed": true
   },
   "lastOpenFiles": [
-    "Content/8_Polstellen.md",
-    "Content/Python Control Systems Library.md",
-    "Python Control Systems Library.md",
-    "Content/9_gekoppelte_lin_Systeme.md",
-    "Content/7_Übertragungsfunktion.md",
-    "Content/6_Laplace.md",
+    "Content/10_Typ_1_WEA.md",
     "Content/Anti Wind Up.md",
     "Untitled.md",
-    "Content/8b_Polstellen.md",
-    "Content/6b_Wolfram_Alpha.md"
+    "Content/Frequenzgang.md",
+    "Content/Girod2003.md",
+    "Content/Linearisierung.md",
+    "Content/Untitled.md",
+    "Content/Excalidraw.md",
+    "Content/8_Polstellen.md",
+    "Content/9_gekoppelte_lin_Systeme.md"
   ]
 }

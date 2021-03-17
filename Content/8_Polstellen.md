@@ -39,7 +39,7 @@ $$s_{1,2} = -\omega_0\,d \pm \omega_0\sqrt{d^2-1}$$
 Es ergeben sich zwei negative reelle Pole:
 $$s_{1} = -\omega_0\,d + \omega_0\sqrt{d^2-1} \qquad \textsf{und} \qquad s_{2} = -\omega_0\,d - \omega_0\sqrt{d^2-1}$$
 Mit den  Zeitkonstanten $T_1 = -\frac{1}{s_1}$ und $T_2 = \frac{1}{s_2}$ erhält man die Übertragungsfunktion
-$$G(s) = \frac{k_s}{(T_1s+)(T_2s+1)}$$
+$$G(s) = \frac{k_s}{(T_1s+1)(T_2s+1)}$$
 
 <iframe  style="border:none;" src="file:///C:/Users/beck_rb/Documents/Obsidian_Zettelkasten/RT_Schulung/Resources/T12reel.html" height="450" width="100%"></iframe>
 
