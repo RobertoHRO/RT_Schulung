@@ -64,6 +64,18 @@ Zitat aus Lunze:
 **Elemente eines Blockschaltbildes (BSB)**
 ![Spezielle Symbole in Blockschaltbildern Quelle: Lunze 1 2016 (Abb. 3.2)|500](Uebertragungsglieder.png)
 
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 ## Beispiel 1: Fahrzeugmodell 1/ 
@@ -73,11 +85,25 @@ mit einer Masse von $m=1000 kg$ einem Reibbeiwert von $b=50 \tfrac{N\cdot s}{m}$
 1. Wie sieht das Übertragungsglied für das Blockschaltbild aus?
 2. Wie lange dauert ein Beschleunigungsmanöver von $v_0=5\tfrac{m}{s}$ auf $v_0=10\tfrac{m}{s}$?
 
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 ## Beispiel 1: Fahrzeugmodell 2/ 
 ### 1. Übertragungsglied
 ![[Bilder_RT_2.svg]]
+
+
 
 ---
 
@@ -99,9 +125,9 @@ $$
 
 ## Beispiel 1: Fahrzeugmodell 4/
 
-DGL | Lösung | eingesetzt 
------| -------- | -----------
-$$\tfrac{d}{d\,t}v(t)  = -\frac{b}{m}\cdot v(t)+\frac{F_u}{m}$$ | $$v \left( t \right) ={\frac {F_u}{b}}+{{\rm e}^{-{\frac {b\,t}{m}}}}\left( v_{0}-{\frac {F_u}{b}} \right)$$ | $$v \left( t \right) =10-5\,{{\rm e}^{-t/20}}$$
+| DGL                                                             | Lösung                                                                                                       | eingesetzt                                      |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ----------------------------------------------- |
+| $$\tfrac{d}{d\,t}v(t)  = -\frac{b}{m}\cdot v(t)+\frac{F_u}{m}$$ | $$v \left( t \right) ={\frac {F_u}{b}}+{{\rm e}^{-{\frac {b\,t}{m}}}}\left( v_{0}-{\frac {F_u}{b}} \right)$$ | $$v \left( t \right) =10-5\,{{\rm e}^{-t/20}}$$ |
 
 
 ![Änderung der Fahrzeuggeschwindigekeit bei $F_u=500 N$ und $v(0)=5 \tfrac{m}{s}$](SprungantwortFahrzeuggeschwindigkeit.png)
