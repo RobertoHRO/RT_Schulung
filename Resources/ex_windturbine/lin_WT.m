@@ -31,17 +31,20 @@ zpk_min = zpk(sys_min);
 GProc=zpk_min(1,1);
 
 % Process with som model uncertainty
-GProcReal=zpk_min(1,1);
-% GProcReal=zpk_min(1,1)*tf([-0.1,1],[0.2,1]);
+% GProcReal=GProc*1.1;
+% GProcReal=GProc*tf([-0.1 1],[1]);
 
 %% PI-Regler
-GRegPI = -1*(tf(10,1) + tf(140,[1,0]));
+
+Kp=40;
+Ki=80;
+GRegPI = -1*(tf(Kp,1) + tf(Ki,[1,0]));
 
 %% Vorsteuerung 1
 GW2 = minreal(GRegPI*GProc/(1+GRegPI*GProc));
 
 n=3;
-GDes = tf(1,[1/n 1])^n;
+GDes = tf(1,[0.2/n 1])^n;
 % step(GDes,5);
 % grid
 
@@ -49,10 +52,15 @@ GFF = GDes/GW2;
 
 %% Vorsteurung 2
 n=3;
-GDes = tf(1,[1/n 1])^n;
+GDes = tf(1,[0.2/n 1])^n;
 step(GDes,5);
 
 GFF2 = GDes/GProc;
 
-open_system('Ctrl_WT');
+
+%% IMC Regler
+
+KIMC = GDes/GProc;
+
+% open_system('Ctrl_WT');
 
