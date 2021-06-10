@@ -32,8 +32,8 @@ fmu.enterInitializationMode()
 fmu.exitInitializationMode()
 
 tend     = 20
-dt_reg   = 0.05
-dt_fine  = 0.01
+dt_reg   = 0.02
+dt_fine  = 0.001
 n_fine   = round(dt_reg/dt_fine)
 
 tfine = [0.0]
@@ -42,7 +42,7 @@ yfine = [1.0]
 
 #  |-n0| ... |-3|-2|-1|0|1|2|3 .. |n|
 
-n0 = 1
+n0 = 7
 n  = round(tend/dt_reg);
 
 treg = [x*dt_reg for x in range(-n0+1,1)] + [x*dt_reg for x in range(1,n+1)]
@@ -51,28 +51,36 @@ ureg = [0.0 for t in treg]
 ereg = [0.0 for t in treg]
 rreg = [0.8-0.1*(t>=10.0) for t in treg]
 
+rreg_lin = [x-0.8 for x in rreg]
+uff = [0.0 for t in treg]
+
 Kp = 10
-Ki = 40
+Ki = 20
 T  = dt_reg
 
 memo = yreg[0]
-for k in range(n0,n+n0):        
+for k in range(n0,n+n0):
     
+    
+
+    tt = 4.207893221e10*rreg_lin[k] - 1.188447559e11*rreg_lin[k-1] + 1.144251045e11*rreg_lin[k-2] - 3.930999540e10*rreg_lin[k-3] + 2.046319496e9*rreg_lin[k-4] - 3.20218750e8*rreg_lin[k-5]
+    uff[k] = -1/(2.892703283e9)*(tt - 9.516033468e9*uff[k-1] + 1.185270961e10*uff[k-2] - 6.768606472e9*uff[k-3] + 1.660759637e9*uff[k-4] - 1.34940625e8*uff[k-5] + 1.5625000e7*uff[k-6])
+
     if treg[k]>2.5:
         ereg[k] = -(rreg[k] - yreg[k-1])
-        
-        ureg[k] = ureg[k-1] + (Ki*T+Kp)*ereg[k]  - Kp*ereg[k-1] 
 
-    fmu.setReal([1], [ureg[k]])    
+        ureg[k] = ureg[k-1] + (Ki*T+Kp)*ereg[k]  - Kp*ereg[k-1]
+
+    fmu.setReal([1], [ureg[k]+uff[k]])
     for ms in range(0,n_fine):
         ret = fmu.doStep(currentCommunicationPoint=tfine[-1], communicationStepSize=dt_fine)
         tfine += [tfine[-1]+dt_fine]
         yfine += fmu.getReal([3])
-    
-    
+
+
     yreg[k] = memo
     memo = yfine[-1]
-    
+
     if k<=10:
         logging.info(' k: %3s | treg[k] %4.4s | yreg[k-1] %4.4s | rreg[k] %4.4s | ereg[k] %4.5s | yreg[k] %4.4s', k, treg[k], yreg[k-1],rreg[k],ereg[k],yreg[k])
 
@@ -98,6 +106,7 @@ axs[0].grid(color=[0.9,0.9,0.9])
 axs[0].legend()
 
 axs[1].step(treg, ureg,label = 'pitch')
+axs[1].step(treg, uff,label = 'feedforward')
 axs[1].grid(color=[0.9,0.9,0.9])
 axs[1].grid(color='lightgray')
 axs[1].legend()
@@ -106,4 +115,3 @@ fig.show()
 # axs[1].plot(treg, ereg)
 
 
-        
