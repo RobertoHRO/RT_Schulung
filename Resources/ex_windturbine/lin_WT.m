@@ -36,6 +36,8 @@ else
     load GProc
 end
 
+
+
 % Process with som model uncertainty
 GProcReal=GProc*1;
 
@@ -44,6 +46,20 @@ GProcReal=GProc*1;
 AP_y = 0.8155;
 AP_u = 5;
 T = 0.02;
+
+%% Proc
+
+GProc_d = c2d(tf(GProc), T, 'zoh');
+
+Gdes2_d = tf([1],[1 0],T);
+
+% Gdes2_d = tf([1 1 1 1 1 1 1],[7 0 0 0 0 0 0 0],T);
+
+GCompReg_d = feedback(Gdes2_d,1,1)/GProc_d;
+% 
+% feedback(Greg_d*GProc_d,1)
+% step(ans)
+
 %% PI-Regler
 
 Kp=10;
