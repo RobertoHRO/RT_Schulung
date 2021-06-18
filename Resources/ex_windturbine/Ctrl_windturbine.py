@@ -1,4 +1,3 @@
-import numpy
 from fmpy import read_model_description, extract
 from fmpy.fmi2 import FMU2Slave
 import shutil
@@ -30,88 +29,131 @@ fmu.instantiate()
 fmu.setupExperiment(startTime=0.0)
 fmu.enterInitializationMode()
 fmu.exitInitializationMode()
+fmu.setReal([2], [10]) # Windgeschwindigkeit auf 10m/s
 
-tend     = 20
-dt_reg   = 0.02
-dt_fine  = 0.001
-n_fine   = round(dt_reg/dt_fine)
 
-tfine = [0.0]
-yfine = [1.0]
+tend     = 20                       # simulation duration
+dt_reg   = 0.1                     # sample time control system
+dt_mod   = 0.001                     # sample time of model
+n_fine   = round(dt_reg/dt_mod)     # number of model iterations per control system sample
+
+# Control system operating point 
+OP_u = 5.0          # pitch (deg)  
+OP_y = 0.8155       # power (pu)
+
+# initialize 
+tmod = [0.0]        # model time vector
+ymod = [1.0]        # model output vector
 
 
 #  |-n0| ... |-3|-2|-1|0|1|2|3 .. |n|
 
-n0 = 7
-n  = round(tend/dt_reg);
+n0 = 7                              # number of past samples for inital values
+n  = round(tend/dt_reg);            # number of control system steps
 
+# time vecor especially for plotting
 treg = [x*dt_reg for x in range(-n0+1,1)] + [x*dt_reg for x in range(1,n+1)]
-yreg = [1.0 for t in treg]
+
+# reference values for power in process and control coordinates 
+rproc = [0.8-0.1*(t>=10.0) for t in treg]
+rreg  = [r-OP_y for r in rproc]
+
+# initialize desired values for power in process and control coordinates 
+ydesproc = [0.0 for t in treg]
+ydesmod = [0.0 for t in treg]
+
+# initialize output values for power in process and control coordinates 
+yproc = [0.0 for t in treg]
+yreg = [0.0 for t in treg]
+
+# initialize manipulated variable (pitch) in process and control coordinates 
+uproc = [0.0 for t in treg]
 ureg = [0.0 for t in treg]
+
+# initialize control error
 ereg = [0.0 for t in treg]
-rreg = [0.8-0.1*(t>=10.0) for t in treg]
 
-rreg_lin = [x-0.8 for x in rreg]
-uff = [0.0 for t in treg]
+# initialize feed forward and feedback signal vectors
+uffreg = [0.5269 for t in treg]
+ufbreg = [0.0 for t in treg]
 
-Kp = 10
-Ki = 20
-T  = dt_reg
-
-memo = yreg[0]
+memo = OP_y     # init memory to resolve algebraic loop
 for k in range(n0,n+n0):
     
+    # calc desired output from reference value
+    ydesmod[k]= 0.42857*ydesmod[k-1] + -0.061224*ydesmod[k-2] + 0.0029155*ydesmod[k-3]+0.078717*rreg[k-0]+0.23615*rreg[k-1]+0.23615*rreg[k-2]+0.078717*rreg[k-3]
+    ydesproc[k] = ydesmod[k]+OP_y
     
+    # calc feedforward signal
+    uffreg[k]= -0.84007*uffreg[k-1] + 0.89317*uffreg[k-2] + 0.44274*uffreg[k-3] + -0.26837*uffreg[k-4] + 0.041262*uffreg[k-5] + -0.0020219*uffreg[k-6]+-19.1915*rreg[k-0]+-22.4428*rreg[k-1]+18.9386*rreg[k-2]+10.3965*rreg[k-3]+-21.2951*rreg[k-4]+-0.41804*rreg[k-5]+9.0836*rreg[k-6]
 
-    tt = 4.207893221e10*rreg_lin[k] - 1.188447559e11*rreg_lin[k-1] + 1.144251045e11*rreg_lin[k-2] - 3.930999540e10*rreg_lin[k-3] + 2.046319496e9*rreg_lin[k-4] - 3.20218750e8*rreg_lin[k-5]
-    uff[k] = -1/(2.892703283e9)*(tt - 9.516033468e9*uff[k-1] + 1.185270961e10*uff[k-2] - 6.768606472e9*uff[k-3] + 1.660759637e9*uff[k-4] - 1.34940625e8*uff[k-5] + 1.5625000e7*uff[k-6])
 
-    if treg[k]>2.5:
-        ereg[k] = -(rreg[k] - yreg[k-1])
+    if treg[k]>-2.5:
+        # control error
+        ereg[k] = (ydesmod[k] - yreg[k-1])   
 
-        ureg[k] = ureg[k-1] + (Ki*T+Kp)*ereg[k]  - Kp*ereg[k-1]
-
-    fmu.setReal([1], [ureg[k]+uff[k]])
+        # feedback controller           
+        ufbreg[k]= 1*ufbreg[k-1]+-10.2*ereg[k-0]+9.8*ereg[k-1]
+        ufbreg[k]= 1*ufbreg[k-1]+-11*ereg[k-0]+9*ereg[k-1]
+        
+        # control signal
+        ureg[k]  = ufbreg[k] + uffreg[k]
+        uproc[k] = ureg[k] + OP_u
+    else:
+        ereg[k] = 0
+        ufbreg[k] = 0
+        ureg[k]  = 0
+        uproc[k] = OP_u
+    
+    
+    # simulate process
+    fmu.setReal([1], [uproc[k]])
     for ms in range(0,n_fine):
-        ret = fmu.doStep(currentCommunicationPoint=tfine[-1], communicationStepSize=dt_fine)
-        tfine += [tfine[-1]+dt_fine]
-        yfine += fmu.getReal([3])
+        ret = fmu.doStep(currentCommunicationPoint=tmod[-1], communicationStepSize=dt_mod)
+        tmod += [tmod[-1]+dt_mod]
+        ymod += fmu.getReal([3])
 
+    # use last output 
+    yproc[k] = memo
+    yreg[k] = yproc[k]-OP_y
+    
+    # store last model output (process coordinates) in memory
+    memo = ymod[-1]
 
-    yreg[k] = memo
-    memo = yfine[-1]
-
+    # print some values of the sim-step
     if k<=10:
         logging.info(' k: %3s | treg[k] %4.4s | yreg[k-1] %4.4s | rreg[k] %4.4s | ereg[k] %4.5s | yreg[k] %4.4s', k, treg[k], yreg[k-1],rreg[k],ereg[k],yreg[k])
 
 
 # close fmu
 fmu.terminate()
-fmu.freeInstance()
+fmu.freeInstance ()
 logging.info('Closed fmu, try deleting temp-dir: %s', fmu_unzipdir)
+
 # delete temp dir
 shutil.rmtree(fmu_unzipdir, ignore_errors=True)
+
 
 
 # plot results
 fig = plt.figure(1)
 fig.clear()
 fig, axs = plt.subplots(2,sharex='col',num=1)
-axs[0].plot(tfine, yfine, label='power (cont)')
-axs[0].step(treg, yreg, label='power (disc)')
-axs[0].step(treg, rreg,label = 'reference power')
+axs[0].plot(tmod, ymod, label='power (cont)')
+axs[0].step(treg, yproc, label='power (disc)')
 axs[0].set_ylim(0.6,1.2)
 axs[0].set_xlim(0,treg[-1])
 axs[0].grid(color=[0.9,0.9,0.9])
 axs[0].legend()
 
-axs[1].step(treg, ureg,label = 'pitch')
-axs[1].step(treg, uff,label = 'feedforward')
+axs[1].step(treg, uproc,label = 'pitch')
+# axs[1].step(treg, uff,label = 'feedforward')
 axs[1].grid(color=[0.9,0.9,0.9])
-axs[1].grid(color='lightgray')
 axs[1].legend()
+axs[1].set_ylim(5,10)
+# axs[0].set_xlim(0,2.9)
+
 fig.show()
 
-# axs[1].plot(treg, ereg)
 
 
